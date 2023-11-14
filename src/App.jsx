@@ -1,10 +1,10 @@
 import "./App.css";
-import SideBar from "./components/Sidebar";
+import CvApp from "./components/CvApp";
 
 function App() {
 	return (
 		<>
-			<SideBar />
+			<CvApp />
 		</>
 	);
 }

@@ -1,0 +1,43 @@
+@media print {
+	body {
+		padding: 0 !important;
+	}
+
+	.work {
+		break-inside: avoid !important;
+	}
+
+	.sidebar {
+		display: none !important;
+	}
+
+	.container {
+		display: flex !important;
+		box-shadow: none !important;
+		width: 100vw !important;
+	}
+
+	.preview {
+		width: 100vw !important;
+		padding: 0 !important;
+	}
+
+	.paper {
+		box-shadow: none !important;
+		width: 100vw !important;
+		height: fit-content !important;
+		padding: 0px !important;
+	}
+
+	.cv {
+		padding: 0 !important;
+		justify-content: space-evenly;
+	}
+}
+
+@page {
+	margin-top: 25mm !important;
+	margin-bottom: 20mm !important;
+	margin-left: 20mm !important;
+	margin-right: 20mm !important;
+}

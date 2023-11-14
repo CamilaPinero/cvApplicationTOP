@@ -61,7 +61,7 @@ export default function CvPreview({
 						<>
 							{workExperienceArray.map((work) => (
 								<li key={work.id}>
-									<div className="work-1">
+									<div className="work">
 										<Typography variant="h5">
 											{work.position}
 										</Typography>

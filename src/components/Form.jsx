@@ -7,6 +7,7 @@ import {
 	Toolbar,
 	Divider,
 	IconButton,
+	Button,
 } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 
@@ -20,8 +21,9 @@ export function Form(props) {
 						component="div"
 						sx={{ flexGrow: 1 }}
 					>
-						CV APP
+						CV GENERATOR
 					</Typography>
+					<Button onClick={props.handlePrint}>Download PDF</Button>
 				</Toolbar>
 				<Divider />
 

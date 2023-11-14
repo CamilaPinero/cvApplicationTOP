@@ -1,9 +1,18 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Form } from "./Form";
 import CvPreview from "./CvPreview";
 
-export default function SideBar() {
+const newTheme = createTheme({
+	palette: {
+		primary: {
+			main: "#e67474",
+		},
+	},
+});
+
+export default function CvApp() {
 	const [fullName, setFullName] = useState("Full Name");
 	const [email, setEmail] = useState("mail@mail.com");
 	const [phone, setPhone] = useState("35462258");
@@ -39,11 +48,9 @@ export default function SideBar() {
 	function handlePhone(e) {
 		setPhone(e.target.value);
 	}
-
 	function handleAddress(e) {
 		setAddress(e.target.value);
 	}
-
 	const addEducationalExperience = () => {
 		setEducationalExperienceArray((prev) => [
 			...prev,
@@ -64,7 +71,6 @@ export default function SideBar() {
 		);
 		setEducationalExperienceArray(newArr);
 	};
-
 	const addWorkExperience = () => {
 		setWorkExperienceArray((prev) => [
 			...prev,
@@ -78,7 +84,6 @@ export default function SideBar() {
 			},
 		]);
 	};
-
 	const handleWorkExperienceChange = (i, newValue, key) => {
 		let newArr = workExperienceArray.map((work) =>
 			workExperienceArray.findIndex((s) => s.id === work.id) === i
@@ -87,45 +92,55 @@ export default function SideBar() {
 		);
 		setWorkExperienceArray(newArr);
 	};
+	const handlePrint = () => {
+		window.print();
+	};
 
 	return (
 		<>
-			<div className="container">
-				<div className="sidebar">
-					<Form
-						fullName={fullName}
-						handleFullName={handleFullName}
-						address={address}
-						handleAddress={handleAddress}
-						email={email}
-						handleEmail={handleEmail}
-						phone={phone}
-						handlePhone={handlePhone}
-						educationalExperienceArray={educationalExperienceArray}
-						addEducationalExperience={addEducationalExperience}
-						handleEducationalExperienceChange={
-							handleEducationalExperienceChange
-						}
-						workExperienceArray={workExperienceArray}
-						addWorkExperience={addWorkExperience}
-						handleWorkExperienceChange={handleWorkExperienceChange}
-					/>
-				</div>
-				<div className="preview">
-					<div className="paper">
-						<CvPreview
+			<ThemeProvider theme={newTheme}>
+				<div className="container">
+					<div className="sidebar">
+						<Form
 							fullName={fullName}
-							email={email}
-							phone={phone}
+							handleFullName={handleFullName}
 							address={address}
+							handleAddress={handleAddress}
+							email={email}
+							handleEmail={handleEmail}
+							phone={phone}
+							handlePhone={handlePhone}
 							educationalExperienceArray={
 								educationalExperienceArray
 							}
+							addEducationalExperience={addEducationalExperience}
+							handleEducationalExperienceChange={
+								handleEducationalExperienceChange
+							}
 							workExperienceArray={workExperienceArray}
+							addWorkExperience={addWorkExperience}
+							handleWorkExperienceChange={
+								handleWorkExperienceChange
+							}
+							handlePrint={handlePrint}
 						/>
 					</div>
+					<div className="preview">
+						<div className="paper">
+							<CvPreview
+								fullName={fullName}
+								email={email}
+								phone={phone}
+								address={address}
+								educationalExperienceArray={
+									educationalExperienceArray
+								}
+								workExperienceArray={workExperienceArray}
+							/>
+						</div>
+					</div>
 				</div>
-			</div>
+			</ThemeProvider>
 		</>
 	);
 }
